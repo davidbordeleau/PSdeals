@@ -1,0 +1,29 @@
+<%= render partial: 'header' %>
+<main class="container-fluidish">
+  <%= paginate @games %>
+  <h4>Hottest Deals</h4>
+  <h4>Great deals on popular games</h4>
+  <div class="card-rows">
+    <% @games.each do |game| %>
+      <div class="card">
+        <div class="card-body">
+          <img class="img" src="<%= image_path(game.cover_url) %>">
+          <h6 class="card-title">
+            <span class="yellow">
+              <%= game.name %>
+            </span>
+            <span class="badge badge-danger">
+              <%= game.discount %>
+            </span>
+          </h6>
+          <div>
+            <s class="text-muted"><%= game.previous_price %></s>
+            <strong><%= game.current_price %></strong>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @games %>
+</main>
+<%= render partial: 'footer' %>
