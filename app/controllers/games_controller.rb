@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.order(:name).first(6)
+    @games = Game.fetch_games.first(9)
   end
 
   def all_games
